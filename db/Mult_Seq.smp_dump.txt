@@ -1,0 +1,8 @@
+
+State Machine - |multipli|state
+Name state.SHIFT state.OP state.INIT state.IDLE state.NOTIFY 
+state.IDLE 0 0 0 0 0 
+state.INIT 0 0 1 1 0 
+state.OP 0 1 0 1 0 
+state.SHIFT 1 0 0 1 0 
+state.NOTIFY 0 0 0 1 1 
