@@ -1,12 +1,12 @@
-Analysis & Synthesis Status : Successful - Tue Oct 21 19:44:33 2025
+Analysis & Synthesis Status : Successful - Tue Oct 21 19:55:13 2025
 Quartus Prime Version : 17.1.0 Build 590 10/25/2017 SJ Lite Edition
 Revision Name : Mult_Seq
 Top-level Entity Name : multipli
 Family : Cyclone IV E
-Total logic elements : 95
-    Total combinational functions : 86
-    Dedicated logic registers : 35
-Total registers : 35
+Total logic elements : 86
+    Total combinational functions : 69
+    Dedicated logic registers : 34
+Total registers : 34
 Total pins : 36
 Total virtual pins : 0
 Total memory bits : 0

@@ -86,10 +86,7 @@ module multipli(CLOCK, RESET, END_MULT, A, B, S, START);
 									Accu <= Accu;
 							end
 						SHIFT:
-							begin
-								{Accu, LO, X} <= {Accu, LO, X} >>> 2;
-								count <= count + 4'd2;
-							end
+							Accu <= {Accu[8], Accu[8], LO[7:1]};
 						NOTIFY:
 							END_MULT <= 1'b1;
 							

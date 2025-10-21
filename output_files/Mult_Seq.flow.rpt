@@ -1,5 +1,5 @@
 Flow report for Mult_Seq
-Tue Oct 21 19:44:33 2025
+Tue Oct 21 19:55:13 2025
 Quartus Prime Version 17.1.0 Build 590 10/25/2017 SJ Lite Edition
 
 
@@ -40,17 +40,17 @@ refer to the applicable agreement for further details.
 +----------------------------------------------------------------------------------+
 ; Flow Summary                                                                     ;
 +------------------------------------+---------------------------------------------+
-; Flow Status                        ; Successful - Tue Oct 21 19:44:33 2025       ;
+; Flow Status                        ; Successful - Tue Oct 21 19:55:13 2025       ;
 ; Quartus Prime Version              ; 17.1.0 Build 590 10/25/2017 SJ Lite Edition ;
 ; Revision Name                      ; Mult_Seq                                    ;
 ; Top-level Entity Name              ; multipli                                    ;
 ; Family                             ; Cyclone IV E                                ;
 ; Device                             ; EP4CE115F29C7                               ;
 ; Timing Models                      ; Final                                       ;
-; Total logic elements               ; 95                                          ;
-;     Total combinational functions  ; 86                                          ;
-;     Dedicated logic registers      ; 35                                          ;
-; Total registers                    ; 35                                          ;
+; Total logic elements               ; 86                                          ;
+;     Total combinational functions  ; 69                                          ;
+;     Dedicated logic registers      ; 34                                          ;
+; Total registers                    ; 34                                          ;
 ; Total pins                         ; 36                                          ;
 ; Total virtual pins                 ; 0                                           ;
 ; Total memory bits                  ; 0                                           ;
@@ -64,7 +64,7 @@ refer to the applicable agreement for further details.
 +-------------------+---------------------+
 ; Option            ; Setting             ;
 +-------------------+---------------------+
-; Start date & time ; 10/21/2025 19:44:22 ;
+; Start date & time ; 10/21/2025 19:55:02 ;
 ; Main task         ; Compilation         ;
 ; Revision Name     ; Mult_Seq            ;
 +-------------------+---------------------+
@@ -75,7 +75,7 @@ refer to the applicable agreement for further details.
 +-------------------------------------+----------------------------------------+---------------+-------------+----------------+
 ; Assignment Name                     ; Value                                  ; Default Value ; Entity Name ; Section Id     ;
 +-------------------------------------+----------------------------------------+---------------+-------------+----------------+
-; COMPILER_SIGNATURE_ID               ; 2499182280327.176106866208320          ; --            ; --          ; --             ;
+; COMPILER_SIGNATURE_ID               ; 2499182280327.176106930203924          ; --            ; --          ; --             ;
 ; EDA_OUTPUT_DATA_FORMAT              ; Systemverilog Hdl                      ; --            ; --          ; eda_simulation ;
 ; EDA_SIMULATION_TOOL                 ; QuestaSim (SystemVerilog)              ; <None>        ; --          ; --             ;
 ; EDA_TIME_SCALE                      ; 1 ps                                   ; --            ; --          ; eda_simulation ;
@@ -95,8 +95,8 @@ refer to the applicable agreement for further details.
 +----------------------+--------------+-------------------------+---------------------+------------------------------------+
 ; Module Name          ; Elapsed Time ; Average Processors Used ; Peak Virtual Memory ; Total CPU Time (on all processors) ;
 +----------------------+--------------+-------------------------+---------------------+------------------------------------+
-; Analysis & Synthesis ; 00:00:12     ; 1.0                     ; 4806 MB             ; 00:00:24                           ;
-; Total                ; 00:00:12     ; --                      ; --                  ; 00:00:24                           ;
+; Analysis & Synthesis ; 00:00:11     ; 1.0                     ; 4809 MB             ; 00:00:24                           ;
+; Total                ; 00:00:11     ; --                      ; --                  ; 00:00:24                           ;
 +----------------------+--------------+-------------------------+---------------------+------------------------------------+
 
 
