@@ -67,26 +67,26 @@ module multipli(CLOCK, RESET, END_MULT, A, B, S, START);
 							begin
 								count <= count + 4'd2;
 
-								if ({LO[1],LO[0], X} == 3'b000 || {LO[1],LO[0], X} == 3'b111) //NO HACER NADA
+								if ({LO[1:0], X} == 3'b000 || {LO[1:0], X} == 3'b111) //NO HACER NADA
 									Accu <= Accu;
 									
-								else if({LO[1],LO[0], X} == 3'b001 || {LO[1],LO[0], X} == 3'b010) //ACCU+M
+								else if({LO[1:0], X} == 3'b001 || {LO[1:0], X} == 3'b010) //ACCU+M
 									Accu <= Accu + M;
 									
-								else if({LO[1],LO[0], X} == 3'b101 || {LO[1],LO[0], X} == 3'b110) //ACCU-M
+								else if({LO[1:0], X} == 3'b101 || {LO[1:0], X} == 3'b110) //ACCU-M
 									Accu <= Accu - M;
 									
-								else if({LO[1],LO[0], X} == 3'b011) //ACCU+2M
+								else if({LO[1:0], X} == 3'b011) //ACCU+2M
 									Accu <= Accu + (M << 1);
 									
-								else if({LO[1],LO[0], X} == 3'b100) //ACCU-2M
+								else if({LO[1:0], X} == 3'b100) //ACCU-2M
 									Accu <= Accu - (M << 1);
 								
 								else 
 									Accu <= Accu;
 							end
 						SHIFT:
-							Accu <= {Accu[8], Accu[8], LO[7:1]};
+							{Accu,LO,X} <= {Accu[8], Accu[8],Accu, LO[7:1]};
 						NOTIFY:
 							END_MULT <= 1'b1;
 							

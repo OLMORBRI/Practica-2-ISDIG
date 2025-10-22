@@ -1,5 +1,5 @@
 Analysis & Synthesis report for Mult_Seq
-Tue Oct 21 19:55:13 2025
+Wed Oct 22 12:48:47 2025
 Quartus Prime Version 17.1.0 Build 590 10/25/2017 SJ Lite Edition
 
 
@@ -46,15 +46,15 @@ refer to the applicable agreement for further details.
 +----------------------------------------------------------------------------------+
 ; Analysis & Synthesis Summary                                                     ;
 +------------------------------------+---------------------------------------------+
-; Analysis & Synthesis Status        ; Successful - Tue Oct 21 19:55:13 2025       ;
+; Analysis & Synthesis Status        ; Successful - Wed Oct 22 12:48:47 2025       ;
 ; Quartus Prime Version              ; 17.1.0 Build 590 10/25/2017 SJ Lite Edition ;
 ; Revision Name                      ; Mult_Seq                                    ;
 ; Top-level Entity Name              ; multipli                                    ;
 ; Family                             ; Cyclone IV E                                ;
-; Total logic elements               ; 86                                          ;
-;     Total combinational functions  ; 69                                          ;
-;     Dedicated logic registers      ; 34                                          ;
-; Total registers                    ; 34                                          ;
+; Total logic elements               ; 97                                          ;
+;     Total combinational functions  ; 88                                          ;
+;     Dedicated logic registers      ; 35                                          ;
+; Total registers                    ; 35                                          ;
 ; Total pins                         ; 36                                          ;
 ; Total virtual pins                 ; 0                                           ;
 ; Total memory bits                  ; 0                                           ;
@@ -180,20 +180,20 @@ refer to the applicable agreement for further details.
 +---------------------------------------------+-------------+
 ; Resource                                    ; Usage       ;
 +---------------------------------------------+-------------+
-; Estimated Total logic elements              ; 86          ;
+; Estimated Total logic elements              ; 97          ;
 ;                                             ;             ;
-; Total combinational functions               ; 69          ;
+; Total combinational functions               ; 88          ;
 ; Logic element usage by number of LUT inputs ;             ;
-;     -- 4 input functions                    ; 25          ;
-;     -- 3 input functions                    ; 39          ;
-;     -- <=2 input functions                  ; 5           ;
+;     -- 4 input functions                    ; 35          ;
+;     -- 3 input functions                    ; 45          ;
+;     -- <=2 input functions                  ; 8           ;
 ;                                             ;             ;
 ; Logic elements by mode                      ;             ;
-;     -- normal mode                          ; 46          ;
-;     -- arithmetic mode                      ; 23          ;
+;     -- normal mode                          ; 58          ;
+;     -- arithmetic mode                      ; 30          ;
 ;                                             ;             ;
-; Total registers                             ; 34          ;
-;     -- Dedicated logic registers            ; 34          ;
+; Total registers                             ; 35          ;
+;     -- Dedicated logic registers            ; 35          ;
 ;     -- I/O registers                        ; 0           ;
 ;                                             ;             ;
 ; I/O pins                                    ; 36          ;
@@ -201,9 +201,9 @@ refer to the applicable agreement for further details.
 ; Embedded Multiplier 9-bit elements          ; 0           ;
 ;                                             ;             ;
 ; Maximum fan-out node                        ; CLOCK~input ;
-; Maximum fan-out                             ; 34          ;
-; Total fan-out                               ; 403         ;
-; Average fan-out                             ; 2.30        ;
+; Maximum fan-out                             ; 35          ;
+; Total fan-out                               ; 472         ;
+; Average fan-out                             ; 2.42        ;
 +---------------------------------------------+-------------+
 
 
@@ -212,7 +212,7 @@ refer to the applicable agreement for further details.
 +----------------------------+---------------------+---------------------------+-------------+--------------+---------+-----------+------+--------------+---------------------+-------------+--------------+
 ; Compilation Hierarchy Node ; Combinational ALUTs ; Dedicated Logic Registers ; Memory Bits ; DSP Elements ; DSP 9x9 ; DSP 18x18 ; Pins ; Virtual Pins ; Full Hierarchy Name ; Entity Name ; Library Name ;
 +----------------------------+---------------------+---------------------------+-------------+--------------+---------+-----------+------+--------------+---------------------+-------------+--------------+
-; |multipli                  ; 69 (69)             ; 34 (34)                   ; 0           ; 0            ; 0       ; 0         ; 36   ; 0            ; |multipli           ; multipli    ; work         ;
+; |multipli                  ; 88 (88)             ; 35 (35)                   ; 0           ; 0            ; 0       ; 0         ; 36   ; 0            ; |multipli           ; multipli    ; work         ;
 +----------------------------+---------------------+---------------------------+-------------+--------------+---------+-----------+------+--------------+---------------------+-------------+--------------+
 Note: For table entries with two numbers listed, the numbers in parentheses indicate the number of resources of the given type used by the specific entity alone. The numbers listed outside of parentheses indicate the total resources of the given type used by the specific entity and all of its sub-entities in the hierarchy.
 
@@ -236,11 +236,10 @@ Encoding Type:  One-Hot
 +---------------------------------------+----------------------------------------+
 ; Register name                         ; Reason for Removal                     ;
 +---------------------------------------+----------------------------------------+
-; X                                     ; Stuck at GND due to stuck port data_in ;
 ; count[0]                              ; Stuck at GND due to stuck port data_in ;
 ; state~4                               ; Lost fanout                            ;
 ; state~5                               ; Lost fanout                            ;
-; Total Number of Removed Registers = 4 ;                                        ;
+; Total Number of Removed Registers = 3 ;                                        ;
 +---------------------------------------+----------------------------------------+
 
 
@@ -249,10 +248,10 @@ Encoding Type:  One-Hot
 +----------------------------------------------+-------+
 ; Statistic                                    ; Value ;
 +----------------------------------------------+-------+
-; Total registers                              ; 34    ;
+; Total registers                              ; 35    ;
 ; Number of registers using Synchronous Clear  ; 0     ;
-; Number of registers using Synchronous Load   ; 0     ;
-; Number of registers using Asynchronous Clear ; 34    ;
+; Number of registers using Synchronous Load   ; 1     ;
+; Number of registers using Asynchronous Clear ; 35    ;
 ; Number of registers using Asynchronous Load  ; 0     ;
 ; Number of registers using Clock Enable       ; 23    ;
 ; Number of registers using Preset             ; 0     ;
@@ -264,7 +263,8 @@ Encoding Type:  One-Hot
 +--------------------+-----------+---------------+----------------------+------------------------+------------+----------------------------+
 ; Multiplexer Inputs ; Bus Width ; Baseline Area ; Area if Restructured ; Saving if Restructured ; Registered ; Example Multiplexer Output ;
 +--------------------+-----------+---------------+----------------------+------------------------+------------+----------------------------+
-; 8:1                ; 7 bits    ; 35 LEs        ; 21 LEs               ; 14 LEs                 ; Yes        ; |multipli|Accu[1]          ;
+; 3:1                ; 8 bits    ; 16 LEs        ; 8 LEs                ; 8 LEs                  ; Yes        ; |multipli|LO[0]            ;
+; 11:1               ; 7 bits    ; 49 LEs        ; 28 LEs               ; 21 LEs                 ; Yes        ; |multipli|Accu[1]          ;
 +--------------------+-----------+---------------+----------------------+------------------------+------------+----------------------------+
 
 
@@ -284,20 +284,21 @@ Note: In order to hide this table in the UI and the text report file, please set
 ; Type                  ; Count                       ;
 +-----------------------+-----------------------------+
 ; boundary_port         ; 36                          ;
-; cycloneiii_ff         ; 34                          ;
+; cycloneiii_ff         ; 35                          ;
 ;     CLR               ; 11                          ;
+;     CLR SLD           ; 1                           ;
 ;     ENA CLR           ; 23                          ;
-; cycloneiii_lcell_comb ; 69                          ;
-;     arith             ; 23                          ;
-;         3 data inputs ; 23                          ;
-;     normal            ; 46                          ;
+; cycloneiii_lcell_comb ; 88                          ;
+;     arith             ; 30                          ;
+;         3 data inputs ; 30                          ;
+;     normal            ; 58                          ;
 ;         1 data inputs ; 2                           ;
-;         2 data inputs ; 3                           ;
-;         3 data inputs ; 16                          ;
-;         4 data inputs ; 25                          ;
+;         2 data inputs ; 6                           ;
+;         3 data inputs ; 15                          ;
+;         4 data inputs ; 35                          ;
 ;                       ;                             ;
-; Max LUT depth         ; 4.80                        ;
-; Average LUT depth     ; 3.35                        ;
+; Max LUT depth         ; 4.70                        ;
+; Average LUT depth     ; 3.13                        ;
 +-----------------------+-----------------------------+
 
 
@@ -316,7 +317,7 @@ Note: In order to hide this table in the UI and the text report file, please set
 Info: *******************************************************************
 Info: Running Quartus Prime Analysis & Synthesis
     Info: Version 17.1.0 Build 590 10/25/2017 SJ Lite Edition
-    Info: Processing started: Tue Oct 21 19:55:02 2025
+    Info: Processing started: Wed Oct 22 12:48:35 2025
 Info: Command: quartus_map --read_settings_files=on --write_settings_files=off Mult_Seq -c Mult_Seq
 Warning (18236): Number of processors has not been specified which may cause overloading on shared machines.  Set the global assignment NUM_PARALLEL_PROCESSORS in your QSF to an appropriate value for best performance.
 Info (20030): Parallel compilation is enabled and will use 8 of the 8 processors detected
@@ -327,14 +328,14 @@ Info (286030): Timing-Driven Synthesis is running
 Info (17049): 2 registers lost all their fanouts during netlist optimizations.
 Info (16010): Generating hard_block partition "hard_block:auto_generated_inst"
     Info (16011): Adding 0 node(s), including 0 DDIO, 0 PLL, 0 transceiver and 0 LCELL
-Info (21057): Implemented 122 device resources after synthesis - the final resource count might be different
+Info (21057): Implemented 133 device resources after synthesis - the final resource count might be different
     Info (21058): Implemented 19 input pins
     Info (21059): Implemented 17 output pins
-    Info (21061): Implemented 86 logic cells
+    Info (21061): Implemented 97 logic cells
 Info: Quartus Prime Analysis & Synthesis was successful. 0 errors, 1 warning
-    Info: Peak virtual memory: 4809 megabytes
-    Info: Processing ended: Tue Oct 21 19:55:13 2025
-    Info: Elapsed time: 00:00:11
+    Info: Peak virtual memory: 4808 megabytes
+    Info: Processing ended: Wed Oct 22 12:48:47 2025
+    Info: Elapsed time: 00:00:12
     Info: Total CPU time (on all processors): 00:00:24
 
 
