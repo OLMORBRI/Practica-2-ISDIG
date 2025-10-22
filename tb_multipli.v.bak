@@ -1,0 +1,96 @@
+`timescale 1ns/1ps
+
+module tb_multipli;
+
+  // Parámetros
+  localparam int TAM    = 8;
+  localparam int CLK_NS = 10;   // 100 MHz
+
+  // Señales TB
+  logic                    CLOCK = 0;
+  logic                    RESET = 0;   // activo en bajo en tu RTL (negedge RESET)
+  logic                    START = 0;
+  logic [TAM-1:0]          A     = '0;
+  logic [TAM-1:0]          B     = '0;
+  logic [2*TAM-1:0]        S;
+  logic                    END_MULT;
+
+  // DUT
+  multipli #(
+    .tamano(TAM)
+  ) dut (
+    .CLOCK    (CLOCK),
+    .RESET    (RESET),
+    .END_MULT (END_MULT),
+    .A        (A),
+    .B        (B),
+    .S        (S),
+    .START    (START)
+  );
+
+  // Reloj
+  always #(CLK_NS/2) CLOCK = ~CLOCK;
+
+  // Tarea: ejecutar una multiplicación
+  task automatic run_mult(input logic [TAM-1:0] a_i,
+                          input logic [TAM-1:0] b_i,
+                          input string          tag = "");
+    begin
+      // Cargar operandos
+      A = a_i;
+      B = b_i;
+
+      // Pulso de START (1 ciclo)
+      @(negedge CLOCK);
+      START = 1'b1;
+      @(negedge CLOCK);
+      START = 1'b0;
+
+      // Esperar fin de operación
+      @(posedge END_MULT);
+
+      // Mostrar resultado (unsigned y signed para referencia)
+      $display("[%0t] %s A=0x%0h (%0d / %0d signed),  B=0x%0h (%0d / %0d signed)  --> S=0x%0h (%0d / %0d signed)",
+               $time, tag,
+               A, A, $signed(A),
+               B, B, $signed(B),
+               S, S, $signed(S));
+
+      // Dar 1 ciclo extra y volver a IDLE
+      @(negedge CLOCK);
+    end
+  endtask
+
+  // Reset y secuencia de pruebas
+  initial begin
+    // Reset asíncrono activo en bajo
+    RESET = 0;
+    START = 0;
+    A     = '0;
+    B     = '0;
+
+    repeat (5) @(negedge CLOCK);
+    RESET = 1; // liberar reset
+    @(negedge CLOCK);
+
+    // Casos de prueba (básicos)
+    run_mult(8'h00, 8'h00, "TC1: 0*0");
+    run_mult(8'h03, 8'h05, "TC2: 3*5");
+    run_mult(8'h0A, 8'h0C, "TC3: 10*12");
+    run_mult(8'hFF, 8'h02, "TC4: 255*2  (unsigned) | -1*2 (signed)");
+    run_mult(8'hFE, 8'hFD, "TC5: 254*253 (unsigned) | -2*-3 (signed)");
+    run_mult(8'h80, 8'h02, "TC6: 128*2  (unsigned) | -128*2 (signed)");
+    run_mult(8'h7F, 8'h7F, "TC7: 127*127");
+
+    // Fin
+    repeat (5) @(negedge CLOCK);
+    $finish;
+  end
+
+  // (Opcional) Dump para simuladores tipo Verilator; ModelSim ignora $dumpfile
+  initial begin
+    $dumpfile("tb_multipli.vcd");
+    $dumpvars(0, tb_multipli);
+  end
+
+endmodule

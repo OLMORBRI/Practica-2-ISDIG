@@ -25,10 +25,10 @@ module multipli(CLOCK, RESET, END_MULT, A, B, S, START);
 	state_t state, next_state;
 	
 	//REGISTROS INTERNOS
-	logic [8:0] Accu;
+	logic [tamano:0] Accu;
 	logic [tamano-1:0] LO;
 	logic [tamano-1:0] M;
-	logic [3:0] count;
+	logic [$clog2(tamano+1)-1:0] count;
 	logic X;
 	
 	//BLOQUE SECUENCIAL DEL RESET DE ESTADOS

@@ -1,0 +1,92 @@
+`timescale 1ns/1ps
+
+module tb_multipli;
+
+  // Parámetros
+  localparam int TAM    = 16;
+  localparam int CLK_NS = 10;  // 100 MHz
+
+  // Señales TB
+  logic                   CLOCK = 1'b0;
+  logic                   RESET = 1'b0;   // activo en bajo
+  logic                   START = 1'b0;
+  logic [TAM-1:0]         A     = '0;
+  logic [TAM-1:0]         B     = '0;
+  logic [2*TAM-1:0]       S;
+  logic                   END_MULT;
+
+  // DUT (tu módulo tal cual)
+  multipli #(.tamano(TAM)) dut (
+    .CLOCK    (CLOCK),
+    .RESET    (RESET),
+    .END_MULT (END_MULT),
+    .A        (A),
+    .B        (B),
+    .S        (S),
+    .START    (START)
+  );
+
+  // Reloj
+  always #(CLK_NS/2) CLOCK = ~CLOCK;
+
+  // --- Tarea para ejecutar un caso y comprobar el resultado (unsigned) ---
+  task automatic run_case(input logic [TAM-1:0] a_i,
+                          input logic [TAM-1:0] b_i,
+                          input string          tag = "");
+    logic [2*TAM-1:0] exp;
+    begin
+      // Preparar operandos
+      @(negedge CLOCK);
+      A = a_i;
+      B = b_i;
+
+      // Pulso START de 1 ciclo
+      START = 1'b1;
+      @(negedge CLOCK);
+      START = 1'b0;
+
+      // Esperar a que termine
+      @(posedge END_MULT);
+
+      // Esperado (unsigned)
+      exp = a_i * b_i;
+
+      // Mostrar y comprobar (sin aserciones SVA: solo if + display)
+      if (S === exp) begin
+        $display("[%0t] %s  A=%0d (0x%0h)  B=%0d (0x%0h)  -> S=%0d (0x%0h)  OK", $time, tag, A, A, B, B, S, S);
+      end else begin
+        $display("[%0t] %s  A=%0d (0x%0h)  B=%0d (0x%0h)  -> S=%0d (0x%0h)  EXP=%0d (0x%0h)  **FAIL**", $time, tag, A, A, B, B, S, S, exp, exp);
+      end
+
+      // 1 ciclo extra para volver a IDLE
+      @(negedge CLOCK);
+    end
+  endtask
+
+  // Secuencia principal
+  initial begin
+    // Reset asíncrono activo en bajo
+    RESET = 1'b0;
+    START = 1'b0;
+    A     = '0;
+    B     = '0;
+
+    repeat (5) @(negedge CLOCK);
+    RESET = 1'b1;  // liberar reset
+    @(negedge CLOCK);
+
+    // Casos de prueba básicos (unsigned)
+    run_case(8'd0,   8'd0,   "TC1  0 * 0");
+    run_case(8'd3,   8'd5,   "TC2  3 * 5");
+    run_case(8'd10,  8'd12,  "TC3  10 * 12");
+    run_case(8'd15,  8'd15,  "TC4  15 * 15");
+    run_case(8'd255, 8'd2,   "TC5  255 * 2");
+    run_case(8'd128, 8'd2,   "TC6  128 * 2");
+    run_case(8'd200, 8'd150, "TC7  200 * 150");
+
+    // Fin
+    repeat (5) @(negedge CLOCK);
+    $finish;
+  end
+
+endmodule
