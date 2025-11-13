@@ -1,5 +1,5 @@
 Flow report for Mult_Seq
-Wed Oct 22 13:43:56 2025
+Thu Nov 13 10:52:26 2025
 Quartus Prime Version 17.1.0 Build 590 10/25/2017 SJ Lite Edition
 
 
@@ -40,17 +40,17 @@ refer to the applicable agreement for further details.
 +----------------------------------------------------------------------------------+
 ; Flow Summary                                                                     ;
 +------------------------------------+---------------------------------------------+
-; Flow Status                        ; Successful - Wed Oct 22 13:43:56 2025       ;
+; Flow Status                        ; Successful - Thu Nov 13 10:52:26 2025       ;
 ; Quartus Prime Version              ; 17.1.0 Build 590 10/25/2017 SJ Lite Edition ;
 ; Revision Name                      ; Mult_Seq                                    ;
 ; Top-level Entity Name              ; multipli                                    ;
 ; Family                             ; Cyclone IV E                                ;
 ; Device                             ; EP4CE115F29C7                               ;
 ; Timing Models                      ; Final                                       ;
-; Total logic elements               ; 89 / 114,480 ( < 1 % )                      ;
-;     Total combinational functions  ; 88 / 114,480 ( < 1 % )                      ;
-;     Dedicated logic registers      ; 35 / 114,480 ( < 1 % )                      ;
-; Total registers                    ; 35                                          ;
+; Total logic elements               ; 94 / 114,480 ( < 1 % )                      ;
+;     Total combinational functions  ; 94 / 114,480 ( < 1 % )                      ;
+;     Dedicated logic registers      ; 36 / 114,480 ( < 1 % )                      ;
+; Total registers                    ; 36                                          ;
 ; Total pins                         ; 36 / 529 ( 7 % )                            ;
 ; Total virtual pins                 ; 0                                           ;
 ; Total memory bits                  ; 0 / 3,981,312 ( 0 % )                       ;
@@ -64,38 +64,62 @@ refer to the applicable agreement for further details.
 +-------------------+---------------------+
 ; Option            ; Setting             ;
 +-------------------+---------------------+
-; Start date & time ; 10/22/2025 13:43:20 ;
+; Start date & time ; 11/13/2025 10:51:34 ;
 ; Main task         ; Compilation         ;
 ; Revision Name     ; Mult_Seq            ;
 +-------------------+---------------------+
 
 
-+------------------------------------------------------------------------------------------------------------------------------+
-; Flow Non-Default Global Settings                                                                                             ;
-+--------------------------------------+----------------------------------------+---------------+-------------+----------------+
-; Assignment Name                      ; Value                                  ; Default Value ; Entity Name ; Section Id     ;
-+--------------------------------------+----------------------------------------+---------------+-------------+----------------+
-; COMPILER_SIGNATURE_ID                ; 257763406094047.176113340007468        ; --            ; --          ; --             ;
-; EDA_DESIGN_INSTANCE_NAME             ; NA                                     ; --            ; --          ; tb_multipli    ;
-; EDA_NATIVELINK_SIMULATION_TEST_BENCH ; tb_multipli                            ; --            ; --          ; eda_simulation ;
-; EDA_OUTPUT_DATA_FORMAT               ; Systemverilog Hdl                      ; --            ; --          ; eda_simulation ;
-; EDA_SIMULATION_TOOL                  ; QuestaSim (SystemVerilog)              ; <None>        ; --          ; --             ;
-; EDA_TEST_BENCH_ENABLE_STATUS         ; TEST_BENCH_MODE                        ; --            ; --          ; eda_simulation ;
-; EDA_TEST_BENCH_FILE                  ; tb_multipli.sv                         ; --            ; --          ; tb_multipli    ;
-; EDA_TEST_BENCH_MODULE_NAME           ; tb_multipli                            ; --            ; --          ; tb_multipli    ;
-; EDA_TEST_BENCH_NAME                  ; tb_multipli                            ; --            ; --          ; eda_simulation ;
-; EDA_TIME_SCALE                       ; 1 ps                                   ; --            ; --          ; eda_simulation ;
-; MAX_CORE_JUNCTION_TEMP               ; 85                                     ; --            ; --          ; --             ;
-; MIN_CORE_JUNCTION_TEMP               ; 0                                      ; --            ; --          ; --             ;
-; NOMINAL_CORE_SUPPLY_VOLTAGE          ; 1.2V                                   ; --            ; --          ; --             ;
-; PARTITION_COLOR                      ; -- (Not supported for targeted family) ; --            ; multipli    ; Top            ;
-; PARTITION_FITTER_PRESERVATION_LEVEL  ; -- (Not supported for targeted family) ; --            ; multipli    ; Top            ;
-; PARTITION_NETLIST_TYPE               ; -- (Not supported for targeted family) ; --            ; multipli    ; Top            ;
-; POWER_BOARD_THERMAL_MODEL            ; None (CONSERVATIVE)                    ; --            ; --          ; --             ;
-; POWER_PRESET_COOLING_SOLUTION        ; 23 MM HEAT SINK WITH 200 LFPM AIRFLOW  ; --            ; --          ; --             ;
-; PROJECT_OUTPUT_DIRECTORY             ; output_files                           ; --            ; --          ; --             ;
-; TOP_LEVEL_ENTITY                     ; multipli                               ; Mult_Seq      ; --          ; --             ;
-+--------------------------------------+----------------------------------------+---------------+-------------+----------------+
++--------------------------------------------------------------------------------------------------------------------------------------+
+; Flow Non-Default Global Settings                                                                                                     ;
++--------------------------------------+----------------------------------------+---------------+-------------+------------------------+
+; Assignment Name                      ; Value                                  ; Default Value ; Entity Name ; Section Id             ;
++--------------------------------------+----------------------------------------+---------------+-------------+------------------------+
+; COMPILER_SIGNATURE_ID                ; 257763406094047.176302749412252        ; --            ; --          ; --                     ;
+; EDA_DESIGN_INSTANCE_NAME             ; NA                                     ; --            ; --          ; tb_prog                ;
+; EDA_DESIGN_INSTANCE_NAME             ; NA                                     ; --            ; --          ; tb_multipli_avanzada   ;
+; EDA_DESIGN_INSTANCE_NAME             ; NA                                     ; --            ; --          ; tb_multipli_top        ;
+; EDA_DESIGN_INSTANCE_NAME             ; NA                                     ; --            ; --          ; tb_multipli_intermedia ;
+; EDA_DESIGN_INSTANCE_NAME             ; NA                                     ; --            ; --          ; tb_multipli_prog       ;
+; EDA_DESIGN_INSTANCE_NAME             ; NA                                     ; --            ; --          ; tb_multipli            ;
+; EDA_DESIGN_INSTANCE_NAME             ; NA                                     ; --            ; --          ; testbench              ;
+; EDA_NATIVELINK_SIMULATION_TEST_BENCH ; tb_multipli_intermedia                 ; --            ; --          ; eda_simulation         ;
+; EDA_OUTPUT_DATA_FORMAT               ; Systemverilog Hdl                      ; --            ; --          ; eda_simulation         ;
+; EDA_SIMULATION_TOOL                  ; QuestaSim (SystemVerilog)              ; <None>        ; --          ; --                     ;
+; EDA_TEST_BENCH_ENABLE_STATUS         ; TEST_BENCH_MODE                        ; --            ; --          ; eda_simulation         ;
+; EDA_TEST_BENCH_FILE                  ; tb_prog.sv                             ; --            ; --          ; tb_prog                ;
+; EDA_TEST_BENCH_FILE                  ; tb_multipli_avanzada.sv                ; --            ; --          ; tb_multipli_avanzada   ;
+; EDA_TEST_BENCH_FILE                  ; tb_multipli_top.sv                     ; --            ; --          ; tb_multipli_top        ;
+; EDA_TEST_BENCH_FILE                  ; tb_multipli_intermedia.sv              ; --            ; --          ; tb_multipli_intermedia ;
+; EDA_TEST_BENCH_FILE                  ; tb_multipli_prog.sv                    ; --            ; --          ; tb_multipli_prog       ;
+; EDA_TEST_BENCH_FILE                  ; tb_multipli.sv                         ; --            ; --          ; tb_multipli            ;
+; EDA_TEST_BENCH_FILE                  ; testbench.sv                           ; --            ; --          ; testbench              ;
+; EDA_TEST_BENCH_MODULE_NAME           ; tb_prog                                ; --            ; --          ; tb_prog                ;
+; EDA_TEST_BENCH_MODULE_NAME           ; tb_multipli_avanzada                   ; --            ; --          ; tb_multipli_avanzada   ;
+; EDA_TEST_BENCH_MODULE_NAME           ; tb_multipli_top                        ; --            ; --          ; tb_multipli_top        ;
+; EDA_TEST_BENCH_MODULE_NAME           ; tb_multipli_intermedia                 ; --            ; --          ; tb_multipli_intermedia ;
+; EDA_TEST_BENCH_MODULE_NAME           ; tb_multipli_prog                       ; --            ; --          ; tb_multipli_prog       ;
+; EDA_TEST_BENCH_MODULE_NAME           ; tb_multipli                            ; --            ; --          ; tb_multipli            ;
+; EDA_TEST_BENCH_MODULE_NAME           ; testbench                              ; --            ; --          ; testbench              ;
+; EDA_TEST_BENCH_NAME                  ; tb_multipli                            ; --            ; --          ; eda_simulation         ;
+; EDA_TEST_BENCH_NAME                  ; tb_multipli_intermedia                 ; --            ; --          ; eda_simulation         ;
+; EDA_TEST_BENCH_NAME                  ; tb_multipli_avanzada                   ; --            ; --          ; eda_simulation         ;
+; EDA_TEST_BENCH_NAME                  ; tb_prog                                ; --            ; --          ; eda_simulation         ;
+; EDA_TEST_BENCH_NAME                  ; tb_multipli_top                        ; --            ; --          ; eda_simulation         ;
+; EDA_TEST_BENCH_NAME                  ; tb_multipli_prog                       ; --            ; --          ; eda_simulation         ;
+; EDA_TEST_BENCH_NAME                  ; testbench                              ; --            ; --          ; eda_simulation         ;
+; EDA_TIME_SCALE                       ; 1 ps                                   ; --            ; --          ; eda_simulation         ;
+; MAX_CORE_JUNCTION_TEMP               ; 85                                     ; --            ; --          ; --                     ;
+; MIN_CORE_JUNCTION_TEMP               ; 0                                      ; --            ; --          ; --                     ;
+; NOMINAL_CORE_SUPPLY_VOLTAGE          ; 1.2V                                   ; --            ; --          ; --                     ;
+; PARTITION_COLOR                      ; -- (Not supported for targeted family) ; --            ; multipli    ; Top                    ;
+; PARTITION_FITTER_PRESERVATION_LEVEL  ; -- (Not supported for targeted family) ; --            ; multipli    ; Top                    ;
+; PARTITION_NETLIST_TYPE               ; -- (Not supported for targeted family) ; --            ; multipli    ; Top                    ;
+; POWER_BOARD_THERMAL_MODEL            ; None (CONSERVATIVE)                    ; --            ; --          ; --                     ;
+; POWER_PRESET_COOLING_SOLUTION        ; 23 MM HEAT SINK WITH 200 LFPM AIRFLOW  ; --            ; --          ; --                     ;
+; PROJECT_OUTPUT_DIRECTORY             ; output_files                           ; --            ; --          ; --                     ;
+; TOP_LEVEL_ENTITY                     ; multipli                               ; Mult_Seq      ; --          ; --                     ;
++--------------------------------------+----------------------------------------+---------------+-------------+------------------------+
 
 
 +-------------------------------------------------------------------------------------------------------------------------------+
@@ -103,12 +127,12 @@ refer to the applicable agreement for further details.
 +---------------------------+--------------+-------------------------+---------------------+------------------------------------+
 ; Module Name               ; Elapsed Time ; Average Processors Used ; Peak Virtual Memory ; Total CPU Time (on all processors) ;
 +---------------------------+--------------+-------------------------+---------------------+------------------------------------+
-; Analysis & Synthesis      ; 00:00:10     ; 1.0                     ; 4774 MB             ; 00:00:23                           ;
-; Fitter                    ; 00:00:16     ; 1.0                     ; 5716 MB             ; 00:00:24                           ;
-; Assembler                 ; 00:00:04     ; 1.0                     ; 4683 MB             ; 00:00:03                           ;
-; TimeQuest Timing Analyzer ; 00:00:02     ; 1.0                     ; 4847 MB             ; 00:00:02                           ;
-; EDA Netlist Writer        ; 00:00:01     ; 1.0                     ; 4654 MB             ; 00:00:01                           ;
-; Total                     ; 00:00:33     ; --                      ; --                  ; 00:00:53                           ;
+; Analysis & Synthesis      ; 00:00:16     ; 1.0                     ; 4773 MB             ; 00:00:28                           ;
+; Fitter                    ; 00:00:18     ; 1.0                     ; 5724 MB             ; 00:00:27                           ;
+; Assembler                 ; 00:00:07     ; 1.0                     ; 4697 MB             ; 00:00:06                           ;
+; TimeQuest Timing Analyzer ; 00:00:04     ; 1.0                     ; 4857 MB             ; 00:00:04                           ;
+; EDA Netlist Writer        ; 00:00:02     ; 1.0                     ; 4657 MB             ; 00:00:01                           ;
+; Total                     ; 00:00:47     ; --                      ; --                  ; 00:01:06                           ;
 +---------------------------+--------------+-------------------------+---------------------+------------------------------------+
 
 

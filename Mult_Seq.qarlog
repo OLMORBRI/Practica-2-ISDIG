@@ -1,0 +1,23 @@
+Quartus Prime Archive log --	C:/Users/orlyn/OneDrive/Documentos/GitHub/Practica-2-ISDIG/Mult_Seq.qarlog
+
+Archive:	C:/Users/orlyn/OneDrive/Documentos/GitHub/Practica-2-ISDIG/Mult_Seq.qar
+Date:		Wed Nov 12 12:23:11 2025
+Quartus Prime		17.1.0 Build 590 10/25/2017 SJ Lite Edition
+
+	=========== Files Selected: ===========
+C:/Users/orlyn/OneDrive/Documentos/GitHub/Practica-2-ISDIG/Mult_Seq.qpf
+C:/Users/orlyn/OneDrive/Documentos/GitHub/Practica-2-ISDIG/Mult_Seq.qsf
+C:/Users/orlyn/OneDrive/Documentos/GitHub/Practica-2-ISDIG/assignment_defaults.qdf
+C:/Users/orlyn/OneDrive/Documentos/GitHub/Practica-2-ISDIG/multipli.sv
+C:/Users/orlyn/OneDrive/Documentos/GitHub/Practica-2-ISDIG/multipli_parallel.sv
+C:/Users/orlyn/OneDrive/Documentos/GitHub/Practica-2-ISDIG/tb_multipli.sv
+C:/Users/orlyn/OneDrive/Documentos/GitHub/Practica-2-ISDIG/tb_multipli_avanzada.sv
+C:/Users/orlyn/OneDrive/Documentos/GitHub/Practica-2-ISDIG/tb_multipli_intermedia.sv
+C:/Users/orlyn/OneDrive/Documentos/GitHub/Practica-2-ISDIG/tb_multipli_prog.sv
+C:/Users/orlyn/OneDrive/Documentos/GitHub/Practica-2-ISDIG/tb_multipli_top.sv
+C:/Users/orlyn/OneDrive/Documentos/GitHub/Practica-2-ISDIG/tb_prog.sv
+C:/Users/orlyn/OneDrive/Documentos/GitHub/Practica-2-ISDIG/testbench.sv
+	======= Total: 12 files to archive =======
+
+	================ Status: ===============
+All files archived successfully.

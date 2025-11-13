@@ -4,10 +4,6 @@
 			"name" : "Top",
 			"pins" : [
 				{
-					"name" : "END_MULT",
-					"strict" : false
-				},
-				{
 					"name" : "S[0]",
 					"strict" : false
 				},
@@ -72,15 +68,19 @@
 					"strict" : false
 				},
 				{
+					"name" : "END_MULT",
+					"strict" : false
+				},
+				{
+					"name" : "A[0]",
+					"strict" : false
+				},
+				{
 					"name" : "CLOCK",
 					"strict" : false
 				},
 				{
 					"name" : "RESET",
-					"strict" : false
-				},
-				{
-					"name" : "A[0]",
 					"strict" : false
 				},
 				{

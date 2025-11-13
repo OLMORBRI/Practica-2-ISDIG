@@ -1,0 +1,68 @@
+Tue Nov 11 19:31:43 CET 2025
+Trace back: invalid command name "SimObjView"
+    while executing
+"$ViewName root $tv $r"
+    (object "::SimDataset::objectTreeView1" method "::AbstractTreeView::root" body line 5)
+    invoked from within
+"AbstractTreeView::root $root"
+    (object "::SimDataset::objectTreeView1" method "::SimDataset::ObjectTreeView::root" body line 3)
+    invoked from within
+"$TreeView root $root"
+    (procedure "ObjectsTreeView::Root" line 12)
+    invoked from within
+"ObjectsTreeView::Root $nameSpace $context"
+    (procedure "QObjects::_userChangedActiveTimeMode" line 12)
+    invoked from within
+"QObjects::_userChangedActiveTimeMode"
+    ("eval" body line 1)
+    invoked from within
+"eval $itk_option(-timemodecb)"
+    (while configuring option "-timemode" for widget "::.main_pane.objects.interior.cs.body.tree.timebar")
+    (object "::.main_pane.objects.interior.cs.body.tree.timebar" method "::itk::Archetype::configure" )
+    invoked from within
+"configure -timemode $new_mode"
+    (object "::.main_pane.objects.interior.cs.body.tree.timebar" method "::vsimwidgets::TimeBar::TimeModeUpdate" body line 21)
+    invoked from within
+"$timebar TimeModeUpdate --trace"
+    (procedure "::vsimwidgets::TimeBar::TimeModeChangeHandler" body line 8)
+    invoked from within
+"::vsimwidgets::TimeBar::TimeModeChangeHandler gm {} write"
+    (write trace on "gm")
+    invoked from within
+"set gm $m "
+    (procedure "SetMode" line 6)
+    invoked from within
+"SetMode $MODES(active)"
+    (procedure "::TimeBarCmd::SetModeToActive" line 3)
+    invoked from within
+"::TimeBarCmd::SetModeToActive "
+    (procedure "::vsimwidgets::TimeBar::SetModeToActive" body line 1)
+    invoked from within
+"SetModeToActive"
+    (procedure "::vsimwidgets::TimeBar::TimeChangeHandler" body line 10)
+    invoked from within
+"::vsimwidgets::TimeBar::TimeChangeHandler ::vsimPriv acttime write"
+    (write trace on "::vsimPriv(acttime)")
+    invoked from within
+"set ::vsimPriv(acttime) $t"
+    (procedure "::TimeBarCmd::SetActiveTime" line 10)
+    invoked from within
+"::TimeBarCmd::SetActiveTime $t "--store""
+    (procedure "::vsimwidgets::TimeBar::SetActiveTime" body line 18)
+    invoked from within
+"SetActiveTime $_acttimeAfterDrag --postdrag"
+    (procedure "::vsimwidgets::TimeBar::WaveCursorDragChange" body line 23)
+    invoked from within
+"::vsimwidgets::TimeBar::WaveCursorDragChange vsimPriv dragging_cursor write"
+    (write trace on "vsimPriv(dragging_cursor)")
+    invoked from within
+"set vsimPriv(dragging_cursor) 0"
+    (procedure "Wave::1Up" line 76)
+    invoked from within
+"Wave::1Up $widget $x $y"
+    (procedure "Wave::SelectUp" line 4)
+    invoked from within
+"Wave::SelectUp	 .main_pane.wave.interior.cs.body.pw.wf.grid.row0,wave.data 436 127 715 287 "
+    (command bound to event)
+  <2:C:/questasim64_2020.2/win64/tk8.6/bgerror.tcl:106: ::tkerror {can't set "vsimPriv(dragging_cursor)": can't set "::vsimPriv(acttime)": can't set "gm": invalid command name "SimObjView"}
+  <1:eval:1: ::tk::dialog::error::bgerror {can't set "vsimPriv(dragging_cursor)": can't set "::vsimPriv(acttime)": can't set "gm": invalid command name "SimObjView"}

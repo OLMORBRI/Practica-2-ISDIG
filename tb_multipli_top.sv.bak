@@ -1,0 +1,49 @@
+`timescale 1ns/1ps
+
+module tb_multipli_top;
+
+  // Señales TB
+  logic clk;
+  logic reset;
+  logic start;
+  logic signed [7:0]  A, B;
+  logic signed [15:0] S;
+  logic               END_MULT;
+
+  // Instancia del DUV (tu multiplicador Booth con signo)
+  multipli #(.tamano(8)) duv (
+    .CLOCK    (clk),
+    .RESET    (reset),
+    .START    (start),
+    .A        (A),
+    .B        (B),
+    .S        (S),
+    .END_MULT (END_MULT)
+  );
+
+  // Instancia del entorno de estímulos (program)
+  estimulos tb_env (
+    .clk      (clk),
+    .reset    (reset),
+    .start    (start),
+    .A        (A),
+    .B        (B),
+    .S        (S),
+    .END_MULT (END_MULT)
+  );
+
+  // Generador de reloj
+  always #5 clk = ~clk;
+
+  // Init de clock y reset (muy parecido al ejemplo)
+  initial begin
+    clk   = 1'b0;
+    reset = 1'b0;
+    start = 1'b0;
+    A     = '0;
+    B     = '0;
+    // El program también hace su secuencia de reset,
+    // aquí solo ponemos el estado inicial del reloj.
+  end
+
+endmodule

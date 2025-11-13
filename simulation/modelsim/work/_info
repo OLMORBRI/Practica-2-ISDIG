@@ -1,0 +1,218 @@
+m255
+K4
+z2
+!s11f vlog 2020.2 2020.04, Apr 19 2020
+13
+!s112 1.1
+!i10d 8192
+!i10e 25
+!i10f 100
+cModel Technology
+Z0 dC:/Users/orlyn/OneDrive/Documentos/GitHub/Practica-2-ISDIG/simulation/modelsim
+T_opt
+!s110 1762792167
+VzOXoj^=C4=Fi7B:];[3h_2
+Z1 04 15 4 work tb_multipli_top fast 0
+=1-e86f38419edf-691212e6-370-5b34
+Z2 o-quiet -auto_acc_if_foreign -work work
+Z3 tCvgOpt 0
+n@_opt
+Z4 OL;O;2020.2;71
+R0
+T_opt1
+!s110 1762795918
+VAd5_PQ8WfcRmnjaoG0;Mj1
+R1
+=1-e86f38419edf-6912218d-37f-b70
+o-quiet -auto_acc_if_foreign -work work -L altera_ver -L lpm_ver -L sgate_ver -L altera_mf_ver -L altera_lnsim_ver -L cycloneive_ver -L rtl_work -L work +acc
+R3
+n@_opt1
+R4
+R0
+T_opt2
+!s110 1762882887
+V@fgUOnnhLTaSTS2g>56^T2
+04 9 4 work testbench fast 0
+=2-e86f38419edf-69137547-c6-1fa8
+R2
+R3
+n@_opt2
+R4
+vmultipli
+Z5 DXx6 sv_std 3 std 0 22 9oUSJO;AeEaW`l:M@^WG92
+Z6 !s110 1762882862
+!i10b 1
+!s100 @<h1M[eZ`iC@f0YB4?9dA3
+Z7 !s11b Dg1SIo80bB@j0V0VzS_@n1
+Il6jLGzSM`V]ecj]>V^ZM>0
+Z8 VDg1SIo80bB@j0V0VzS_@n1
+S1
+R0
+w1762629263
+8C:/Users/orlyn/OneDrive/Documentos/GitHub/Practica-2-ISDIG/multipli.sv
+FC:/Users/orlyn/OneDrive/Documentos/GitHub/Practica-2-ISDIG/multipli.sv
+!i122 4
+L0 1 138
+Z9 OL;L;2020.2;71
+r1
+!s85 0
+31
+Z10 !s108 1762882862.000000
+Z11 !s107 C:/Users/orlyn/OneDrive/Documentos/GitHub/Practica-2-ISDIG/testbench.sv|C:/Users/orlyn/OneDrive/Documentos/GitHub/Practica-2-ISDIG/multipli_parallel.sv|C:/Users/orlyn/OneDrive/Documentos/GitHub/Practica-2-ISDIG/multipli.sv|
+Z12 !s90 -reportprogress|300|-sv|C:/Users/orlyn/OneDrive/Documentos/GitHub/Practica-2-ISDIG/multipli.sv|C:/Users/orlyn/OneDrive/Documentos/GitHub/Practica-2-ISDIG/multipli_parallel.sv|C:/Users/orlyn/OneDrive/Documentos/GitHub/Practica-2-ISDIG/testbench.sv|
+!i113 0
+Z13 o-sv -L mtiAvm -L mtiRnm -L mtiOvm -L mtiUvm -L mtiUPF -L infact
+R3
+vmultipli_parallel
+R5
+R6
+!i10b 1
+!s100 0:=UMJhE`bYNBQ]^bg4za3
+R7
+I6X@^oP9d4j@jO]:d7o<D^1
+R8
+S1
+R0
+w1762881547
+8C:/Users/orlyn/OneDrive/Documentos/GitHub/Practica-2-ISDIG/multipli_parallel.sv
+FC:/Users/orlyn/OneDrive/Documentos/GitHub/Practica-2-ISDIG/multipli_parallel.sv
+!i122 4
+L0 18 49
+R9
+r1
+!s85 0
+31
+R10
+R11
+R12
+!i113 0
+R13
+R3
+4tb_multipli_prog
+R5
+Z14 DXx4 work 17 testbench_sv_unit 0 22 N5CG9zek;4nTA`a:P]NAQ1
+R6
+R8
+r1
+!s85 0
+!i10b 1
+!s100 m:1_PS7T:;?b<T4hUob6a0
+I^0X;9AWOJd`M4m8g[JX<E2
+Z15 !s105 testbench_sv_unit
+S1
+R0
+Z16 w1762882634
+Z17 8C:/Users/orlyn/OneDrive/Documentos/GitHub/Practica-2-ISDIG/testbench.sv
+Z18 FC:/Users/orlyn/OneDrive/Documentos/GitHub/Practica-2-ISDIG/testbench.sv
+!i122 4
+L0 27 0
+R9
+31
+R10
+R11
+R12
+!i113 0
+R13
+R3
+Xtb_multipli_prog_sv_unit
+R5
+!s110 1762791310
+VjYd^ldjA@[lDBi<ZCFWZG1
+r1
+!s85 0
+!i10b 1
+!s100 6OfBD0UE[<5EBYh]hAcNl3
+IjYd^ldjA@[lDBi<ZCFWZG1
+!i103 1
+S1
+R0
+w1762790502
+8C:/Users/orlyn/OneDrive/Documentos/GitHub/Practica-2-ISDIG/tb_multipli_prog.sv
+FC:/Users/orlyn/OneDrive/Documentos/GitHub/Practica-2-ISDIG/tb_multipli_prog.sv
+!i122 1
+L0 9 0
+R9
+31
+!s108 1762791310.000000
+!s107 C:/Users/orlyn/OneDrive/Documentos/GitHub/Practica-2-ISDIG/tb_multipli_top.sv|C:/Users/orlyn/OneDrive/Documentos/GitHub/Practica-2-ISDIG/tb_multipli_prog.sv|C:/Users/orlyn/OneDrive/Documentos/GitHub/Practica-2-ISDIG/multipli.sv|
+!s90 -reportprogress|300|-sv|-work|work|+incdir+C:/Users/orlyn/OneDrive/Documentos/GitHub/Practica-2-ISDIG|C:/Users/orlyn/OneDrive/Documentos/GitHub/Practica-2-ISDIG/multipli.sv|C:/Users/orlyn/OneDrive/Documentos/GitHub/Practica-2-ISDIG/tb_multipli_prog.sv|C:/Users/orlyn/OneDrive/Documentos/GitHub/Practica-2-ISDIG/tb_multipli_top.sv|
+!i113 0
+o-sv -work work -L mtiAvm -L mtiRnm -L mtiOvm -L mtiUvm -L mtiUPF -L infact
+!s92 -sv -work work +incdir+C:/Users/orlyn/OneDrive/Documentos/GitHub/Practica-2-ISDIG -L mtiAvm -L mtiRnm -L mtiOvm -L mtiUvm -L mtiUPF -L infact
+R3
+vtb_multipli_top
+R5
+!s110 1762795798
+!i10b 1
+!s100 @73ziI><<Y?T4KJK;eB^K0
+R7
+I5hDg`74odK3`>3YeZi:lJ0
+R8
+S1
+R0
+w1762791735
+8C:/Users/orlyn/OneDrive/Documentos/GitHub/Practica-2-ISDIG/tb_multipli_top.sv
+FC:/Users/orlyn/OneDrive/Documentos/GitHub/Practica-2-ISDIG/tb_multipli_top.sv
+!i122 3
+L0 3 41
+R9
+r1
+!s85 0
+31
+!s108 1762795798.000000
+!s107 C:/Users/orlyn/OneDrive/Documentos/GitHub/Practica-2-ISDIG/tb_multipli_top.sv|C:/Users/orlyn/OneDrive/Documentos/GitHub/Practica-2-ISDIG/multipli.sv|
+!s90 -reportprogress|300|-sv|C:/Users/orlyn/OneDrive/Documentos/GitHub/Practica-2-ISDIG/multipli.sv|C:/Users/orlyn/OneDrive/Documentos/GitHub/Practica-2-ISDIG/tb_multipli_top.sv|
+!i113 0
+R13
+R3
+vtestbench
+R5
+R14
+R6
+R8
+r1
+!s85 0
+!i10b 1
+!s100 kknL@jXaS9<9j1NkF>JE=0
+IA:R`LaQ[83d7:?3_<7mj30
+R15
+S1
+R0
+R16
+R17
+R18
+!i122 4
+L0 200 50
+R9
+31
+R10
+R11
+R12
+!i113 0
+R13
+R3
+Xtestbench_sv_unit
+R5
+R6
+VN5CG9zek;4nTA`a:P]NAQ1
+r1
+!s85 0
+!i10b 1
+!s100 Veg7MiZEI=b]UIT?2P[U51
+IN5CG9zek;4nTA`a:P]NAQ1
+!i103 1
+S1
+R0
+R16
+R17
+R18
+!i122 4
+L0 6 0
+R9
+31
+R10
+R11
+R12
+!i113 0
+R13
+R3

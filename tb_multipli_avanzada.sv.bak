@@ -1,0 +1,46 @@
+`timescale 1ns/1ps
+
+//==============================================================
+// Verificación avanzada (sin interface):
+// - module: DUT + señales + clock
+// - program: generación aleatoria, covergroups, checks
+//==============================================================
+module tb_multipli_avanzada;
+
+  // Parámetros
+  localparam int TAM    = 8;
+  localparam int CLK_NS = 10;
+
+  // Señales compartidas TB <-> DUV <-> program
+  logic                          CLOCK = 1'b0;
+  logic                          RESET = 1'b0;    // activo en bajo
+  logic                          START = 1'b0;
+  logic signed [TAM-1:0]         A     = '0;
+  logic signed [TAM-1:0]         B     = '0;
+  logic signed [2*TAM-1:0]       S;
+  logic                          END_MULT;
+
+  // Instancia del DUV
+  multipli #(.tamano(TAM)) dut (
+    .CLOCK    (CLOCK),
+    .RESET    (RESET),
+    .START    (START),
+    .A        (A),
+    .B        (B),
+    .S        (S),
+    .END_MULT (END_MULT)
+  );
+
+  // Reloj
+  always #(CLK_NS/2) CLOCK = ~CLOCK;
+
+  // Instancia del program de verificación
+  tb_prog #(.TAM(TAM)) prog (
+    .CLOCK    (CLOCK),
+    .RESET    (RESET),
+    .START    (START),
+    .A        (A),
+    .B        (B),
+    .S        (S),
+    .END_MULT (END_MULT)
+  );

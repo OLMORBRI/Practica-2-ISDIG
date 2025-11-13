@@ -1,0 +1,167 @@
+`timescale 1ns/1ps
+
+//==============================================================
+// Entorno de verificación (program) para multipli
+// - Generación aleatoria con constraints (paridades)
+// - Covergroup de paridad A/B
+// - Comprobación automática S == A * B
+//==============================================================
+class numeros_rcsg;
+  // operandos aleatorios con signo
+  rand logic signed [7:0] A;
+  rand logic signed [7:0] B;
+
+  // PARES * PARES
+  constraint c_PP { A[0] == 1'b0; B[0] == 1'b0; }
+  // IMPARES * IMPARES
+  constraint c_II { A[0] == 1'b1; B[0] == 1'b1; }
+  // IMPAR * PAR
+  constraint c_IP { A[0] == 1'b1; B[0] == 1'b0; }
+  // PAR * IMPAR
+  constraint c_PI { A[0] == 1'b0; B[0] == 1'b1; }
+endclass
+
+
+program automatic tb_multipli_prog
+(
+  input  logic              clk,
+  output logic              reset,
+  output logic              start,
+  output logic signed [7:0] A,
+  output logic signed [7:0] B,
+  input  logic signed [15:0] S,
+  input  logic              END_MULT
+);
+
+  numeros_rcsg gen;
+  int total_tests = 0;
+  int pass_tests  = 0;
+  int fail_tests  = 0;
+
+  // -------- Covergroup: paridad A/B --------
+  covergroup cg_valores @(posedge END_MULT);
+    cpA : coverpoint A[0] { bins par = {1'b0}; bins imp = {1'b1}; }
+    cpB : coverpoint B[0] { bins par = {1'b0}; bins imp = {1'b1}; }
+    cp_cross : cross cpA, cpB; // PP, PI, IP, II
+  endgroup
+
+  cg_valores cv;
+
+  // -------- Task: aplicar estímulo + comprobar --------
+  task automatic apply_and_check(
+    input logic signed [7:0] a_i,
+    input logic signed [7:0] b_i,
+    input string             tag
+  );
+    logic signed [15:0] exp_s;
+    begin
+      // aplicar en flanco negativo
+      @(negedge clk);
+      A     = a_i;
+      B     = b_i;
+      start = 1'b1;
+      @(negedge clk);
+      start = 1'b0;
+
+      // esperar fin de multiplicación
+      @(posedge END_MULT);
+
+      // modelo de referencia
+      exp_s = a_i * b_i;
+      total_tests++;
+
+      if (S === exp_s) begin
+        pass_tests++;
+        $display("[%0t] %s OK   A=%0d B=%0d -> S=%0d",
+                 $time, tag, a_i, b_i, S);
+      end
+      else begin
+        fail_tests++;
+        $display("[%0t] %s FAIL A=%0d B=%0d -> S=%0d  EXP=%0d",
+                 $time, tag, a_i, b_i, S, exp_s);
+      end
+
+      // muestrear cobertura
+      cv.sample();
+
+      // ciclo extra para volver a IDLE
+      @(negedge clk);
+    end
+  endtask
+
+
+  // ---------------- Secuencia principal ----------------
+  initial begin
+    gen = new();
+    cv  = new();
+
+    // reset inicial
+    reset = 1'b0;
+    start = 1'b0;
+    A     = '0;
+    B     = '0;
+    repeat (5) @(negedge clk);
+    reset = 1'b1;
+    @(negedge clk);
+
+    // Desactivamos todas las constraints específicas
+    gen.c_PP.constraint_mode(0);
+    gen.c_PI.constraint_mode(0);
+    gen.c_IP.constraint_mode(0);
+    gen.c_II.constraint_mode(0);
+
+    // ===== FASE 1: PARES * PARES =====
+    $display("\n[FASE 1] PARES x PARES");
+    gen.c_PP.constraint_mode(1);
+    while (cv.cp_cross.get_coverage() < 25.0) begin
+      assert(gen.randomize()) else $fatal("Randomization failed (PP)");
+      apply_and_check(gen.A, gen.B, "PP");
+    end
+    gen.c_PP.constraint_mode(0);
+
+    // ===== FASE 2: PARES * IMPARES =====
+    $display("\n[FASE 2] PARES x IMPARES");
+    gen.c_PI.constraint_mode(1);
+    while (cv.cp_cross.get_coverage() < 50.0) begin
+      assert(gen.randomize()) else $fatal("Randomization failed (PI)");
+      apply_and_check(gen.A, gen.B, "PI");
+    end
+    gen.c_PI.constraint_mode(0);
+
+    // ===== FASE 3: IMPARES * PARES =====
+    $display("\n[FASE 3] IMPARES x PARES");
+    gen.c_IP.constraint_mode(1);
+    while (cv.cp_cross.get_coverage() < 75.0) begin
+      assert(gen.randomize()) else $fatal("Randomization failed (IP)");
+      apply_and_check(gen.A, gen.B, "IP");
+    end
+    gen.c_IP.constraint_mode(0);
+
+    // ===== FASE 4: IMPARES * IMPARES =====
+    $display("\n[FASE 4] IMPARES x IMPARES");
+    gen.c_II.constraint_mode(1);
+    while (cv.cp_cross.get_coverage() < 100.0) begin
+      assert(gen.randomize()) else $fatal("Randomization failed (II)");
+      apply_and_check(gen.A, gen.B, "II");
+    end
+    gen.c_II.constraint_mode(0);
+
+    // -------- Resumen --------
+    $display("\n======================================");
+    $display("  RESUMEN VERIFICACIÓN AVANZADA");
+    $display("  Total tests : %0d", total_tests);
+    $display("  Passed      : %0d", pass_tests);
+    $display("  Failed      : %0d", fail_tests);
+    $display("  Cobertura paridad (cross): %0.2f %%",
+             cv.cp_cross.get_coverage());
+    $display("======================================");
+
+    if (fail_tests == 0 && cv.cp_cross.get_coverage() == 100.0)
+      $display("STATUS: OK ");
+    else
+      $display("STATUS: ERROR ");
+
+    $finish;
+  end
+
+endprogram

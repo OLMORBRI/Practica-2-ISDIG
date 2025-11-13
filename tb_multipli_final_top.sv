@@ -1,0 +1,79 @@
+`timescale 1ns/1ps
+
+module tb_multipli_final_top;
+
+  logic clk;
+  initial clk = 1'b0;
+  always #5 clk = ~clk;
+
+  tb_if intf(clk);
+
+  multipli #(.tamano(8)) duv (
+    .CLOCK    (intf.CLOCK),
+    .RESET    (intf.RESET),
+    .START    (intf.START),
+    .A        (intf.A),
+    .B        (intf.B),
+    .S        (intf.S_duv),
+    .END_MULT (intf.END_MULT)
+  );
+
+  multipli_parallel #(.tamano(8)) ref_model (
+    .CLOCK    (intf.CLOCK),
+    .RESET    (intf.RESET),
+    .START    (intf.START),
+    .A        (intf.A),
+    .B        (intf.B),
+    .S        (intf.S_ref),
+    .END_MULT ()
+  );
+
+  test_bench tb (intf.TEST);
+
+endmodule//============================================================
+// tb_multipli_final_top.sv
+//============================================================
+`timescale 1ns/1ps
+`include "tb_if.sv"
+`include "test_Control.sv"
+`include "scoreboard.sv"
+
+module tb_multipli_final_top;
+
+  logic clk;
+  tb_if intf(clk);
+
+  // Reloj y reset
+  always #5 clk = ~clk;
+  initial clk = 0;
+  initial begin
+    $dumpfile("multipli_final.vcd");
+    $dumpvars(0, tb_multipli_final_top);
+  end
+
+  // DUT (Booth secuencial)
+  multipli #(.tamano(8)) duv (
+    .CLOCK    (intf.CLOCK),
+    .RESET    (intf.RESET),
+    .START    (intf.START),
+    .A        (intf.A),
+    .B        (intf.B),
+    .S        (intf.S_duv),
+    .END_MULT (intf.END_MULT)
+  );
+
+  // Modelo de referencia
+  multipli_parallel #(.tamano(8)) ref_model (
+    .CLOCK    (intf.CLOCK),
+    .RESET    (intf.RESET),
+    .START    (intf.START),
+    .A        (intf.A),
+    .B        (intf.B),
+    .S        (intf.S_ref),
+    .END_MULT () // no usado
+  );
+
+  // Programa principal
+  test_bench tb (intf.TEST);
+
+endmodule

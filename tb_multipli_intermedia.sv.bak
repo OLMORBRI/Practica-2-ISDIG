@@ -1,0 +1,193 @@
+`timescale 1ns/1ps
+
+module tb_multipli_intermedia;
+
+  // Parámetros
+  localparam int TAM    = 8;
+  localparam int CLK_NS = 10;
+
+  // Señales TB <-> DUV
+  logic                          CLOCK = 1'b0;
+  logic                          RESET = 1'b0;   // activo en bajo
+  logic                          START = 1'b0;
+  logic signed [TAM-1:0]         A     = '0;
+  logic signed [TAM-1:0]         B     = '0;
+  logic signed [2*TAM-1:0]       S;
+  logic                          END_MULT;
+
+  // Contadores
+  int total_tests = 0;
+  int pass_tests  = 0;
+  int fail_tests  = 0;
+
+  // Instancia del DUV
+  multipli #(.tamano(TAM)) dut (
+    .CLOCK    (CLOCK),
+    .RESET    (RESET),
+    .START    (START),
+    .A        (A),
+    .B        (B),
+    .S        (S),
+    .END_MULT (END_MULT)
+  );
+
+  // Clock
+  always #(CLK_NS/2) CLOCK = ~CLOCK;
+
+  // ============================================================
+  // 1) Generación de estímulos aleatorios (RCSG)
+  // ============================================================
+  class Numeros;
+    randc logic signed [TAM-1:0] valorA;
+    randc logic signed [TAM-1:0] valorB;
+
+    // Pares * Pares
+    constraint c_PP { valorA[0] == 1'b0; valorB[0] == 1'b0; }
+    // Impares * Impares
+    constraint c_II { valorA[0] == 1'b1; valorB[0] == 1'b1; }
+    // Impares * Pares
+    constraint c_IP { valorA[0] == 1'b1; valorB[0] == 1'b0; }
+    // Pares * Impares
+    constraint c_PI { valorA[0] == 1'b0; valorB[0] == 1'b1; }
+  endclass
+
+  Numeros numeros_rcsg;
+
+  // ============================================================
+  // 2) Covergroup: combinaciones de paridad A/B
+  // ============================================================
+  covergroup Valores @(posedge END_MULT);
+    cpA : coverpoint A[0] { bins par = {1'b0}; bins imp = {1'b1}; }
+    cpB : coverpoint B[0] { bins par = {1'b0}; bins imp = {1'b1}; }
+    cp3 : cross cpA, cpB; // PP, PI, IP, II
+  endgroup
+
+  Valores valores_cg;
+
+  // ============================================================
+  // 3) Tasks: reset + aplicar & comprobar
+  // ============================================================
+  task automatic do_reset();
+    RESET = 1'b0;
+    START = 1'b0;
+    A     = '0;
+    B     = '0;
+    repeat (5) @(negedge CLOCK);
+    RESET = 1'b1;
+    @(negedge CLOCK);
+  endtask
+
+  task automatic apply_and_check(
+    input logic signed [TAM-1:0] a_i,
+    input logic signed [TAM-1:0] b_i,
+    input string                 tag
+  );
+    logic signed [2*TAM-1:0] exp_s;
+    begin
+      // Aplicar estímulo
+      @(negedge CLOCK);
+      A     = a_i;
+      B     = b_i;
+      START = 1'b1;
+      @(negedge CLOCK);
+      START = 1'b0;
+
+      // Esperar fin operación
+      @(posedge END_MULT);
+
+      // Modelo de referencia
+      exp_s = a_i * b_i;
+      total_tests++;
+
+      if (S === exp_s) begin
+        pass_tests++;
+        $display("[%0t] %s OK   A=%0d B=%0d -> S=%0d",
+                 $time, tag, a_i, b_i, S);
+      end else begin
+        fail_tests++;
+        $error("[%0t] %s FAIL A=%0d B=%0d -> S=%0d  EXP=%0d",
+               $time, tag, a_i, b_i, S, exp_s);
+      end
+
+      // Muestreamos cobertura
+      valores_cg.sample();
+
+      // Un ciclo para volver a IDLE
+      @(negedge CLOCK);
+    end
+  endtask
+
+  // ============================================================
+  // 4) Bloque principal: fases por paridad + while(cobertura)
+  // ============================================================
+  initial begin
+    numeros_rcsg = new();
+    valores_cg   = new();
+
+    do_reset();
+
+    // Desactivamos todas las constraints al inicio
+    numeros_rcsg.c_PP.constraint_mode(0);
+    numeros_rcsg.c_PI.constraint_mode(0);
+    numeros_rcsg.c_IP.constraint_mode(0);
+    numeros_rcsg.c_II.constraint_mode(0);
+
+    // -------- PARES x PARES --------
+    $display("\n[Fase 1] PARES x PARES");
+    numeros_rcsg.c_PP.constraint_mode(1);
+    while (valores_cg.cp3.get_coverage() < 25.0) begin
+      assert(numeros_rcsg.randomize())
+        else $fatal("Randomization failed (PP)");
+      apply_and_check(numeros_rcsg.valorA, numeros_rcsg.valorB, "PP");
+    end
+    numeros_rcsg.c_PP.constraint_mode(0);
+
+    // -------- PARES x IMPARES --------
+    $display("\n[Fase 2] PARES x IMPARES");
+    numeros_rcsg.c_PI.constraint_mode(1);
+    while (valores_cg.cp3.get_coverage() < 50.0) begin
+      assert(numeros_rcsg.randomize())
+        else $fatal("Randomization failed (PI)");
+      apply_and_check(numeros_rcsg.valorA, numeros_rcsg.valorB, "PI");
+    end
+    numeros_rcsg.c_PI.constraint_mode(0);
+
+    // -------- IMPARES x PARES --------
+    $display("\n[Fase 3] IMPARES x PARES");
+    numeros_rcsg.c_IP.constraint_mode(1);
+    while (valores_cg.cp3.get_coverage() < 75.0) begin
+      assert(numeros_rcsg.randomize())
+        else $fatal("Randomization failed (IP)");
+      apply_and_check(numeros_rcsg.valorA, numeros_rcsg.valorB, "IP");
+    end
+    numeros_rcsg.c_IP.constraint_mode(0);
+
+    // -------- IMPARES x IMPARES --------
+    $display("\n[Fase 4] IMPARES x IMPARES");
+    numeros_rcsg.c_II.constraint_mode(1);
+    while (valores_cg.cp3.get_coverage() < 100.0) begin
+      assert(numeros_rcsg.randomize())
+        else $fatal("Randomization failed (II)");
+      apply_and_check(numeros_rcsg.valorA, numeros_rcsg.valorB, "II");
+    end
+    numeros_rcsg.c_II.constraint_mode(0);
+
+    // -------- Resumen --------
+    $display("\n======================================");
+    $display("  RESUMEN VERIFICACIÓN INTERMEDIA (modular)");
+    $display("  Total tests : %0d", total_tests);
+    $display("  Passed      : %0d", pass_tests);
+    $display("  Failed      : %0d", fail_tests);
+    $display("  Cobertura paridad A/B (cross cp3): %0.2f %%",
+             valores_cg.cp3.get_coverage());
+    $display("======================================");
+
+    if (fail_tests == 0 && valores_cg.cp3.get_coverage() == 100.0)
+      $display("STATUS: OK ");
+    else
+      $display("STATUS: ERROR ");
+
+    $finish;
+  end
+
+endmodule

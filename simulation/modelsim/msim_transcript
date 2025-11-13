@@ -28,7 +28,7 @@
 # Modifying modelsim.ini
 # vlog -vlog01compat -work altera_ver {c:/intelfpga_lite/17.1/quartus/eda/sim_lib/altera_primitives.v}
 # QuestaSim-64 vlog 2020.2 Compiler 2020.04 Apr 19 2020
-# Start time: 13:44:16 on Oct 22,2025
+# Start time: 10:58:36 on Nov 13,2025
 # vlog -reportprogress 300 -vlog01compat -work altera_ver c:/intelfpga_lite/17.1/quartus/eda/sim_lib/altera_primitives.v 
 # -- Compiling module global
 # -- Compiling module carry
@@ -110,7 +110,7 @@
 # 	alt_iobuf_diff
 # 	alt_bidir_diff
 # 	alt_bidir_buf
-# End time: 13:44:16 on Oct 22,2025, Elapsed time: 0:00:00
+# End time: 10:58:37 on Nov 13,2025, Elapsed time: 0:00:01
 # Errors: 0, Warnings: 0
 # 
 # vlib verilog_libs/lpm_ver
@@ -122,7 +122,7 @@
 # Modifying modelsim.ini
 # vlog -vlog01compat -work lpm_ver {c:/intelfpga_lite/17.1/quartus/eda/sim_lib/220model.v}
 # QuestaSim-64 vlog 2020.2 Compiler 2020.04 Apr 19 2020
-# Start time: 13:44:16 on Oct 22,2025
+# Start time: 10:58:37 on Nov 13,2025
 # vlog -reportprogress 300 -vlog01compat -work lpm_ver c:/intelfpga_lite/17.1/quartus/eda/sim_lib/220model.v 
 # -- Compiling module LPM_MEMORY_INITIALIZATION
 # -- Compiling module LPM_HINT_EVALUATION
@@ -186,7 +186,7 @@
 # 	lpm_inpad
 # 	lpm_outpad
 # 	lpm_bipad
-# End time: 13:44:16 on Oct 22,2025, Elapsed time: 0:00:00
+# End time: 10:58:37 on Nov 13,2025, Elapsed time: 0:00:00
 # Errors: 0, Warnings: 0
 # 
 # vlib verilog_libs/sgate_ver
@@ -198,7 +198,7 @@
 # Modifying modelsim.ini
 # vlog -vlog01compat -work sgate_ver {c:/intelfpga_lite/17.1/quartus/eda/sim_lib/sgate.v}
 # QuestaSim-64 vlog 2020.2 Compiler 2020.04 Apr 19 2020
-# Start time: 13:44:17 on Oct 22,2025
+# Start time: 10:58:38 on Nov 13,2025
 # vlog -reportprogress 300 -vlog01compat -work sgate_ver c:/intelfpga_lite/17.1/quartus/eda/sim_lib/sgate.v 
 # -- Compiling module oper_add
 # -- Compiling module oper_addsub
@@ -240,7 +240,7 @@
 # 	oper_decoder
 # 	oper_bus_mux
 # 	oper_latch
-# End time: 13:44:17 on Oct 22,2025, Elapsed time: 0:00:00
+# End time: 10:58:38 on Nov 13,2025, Elapsed time: 0:00:00
 # Errors: 0, Warnings: 0
 # 
 # vlib verilog_libs/altera_mf_ver
@@ -252,7 +252,7 @@
 # Modifying modelsim.ini
 # vlog -vlog01compat -work altera_mf_ver {c:/intelfpga_lite/17.1/quartus/eda/sim_lib/altera_mf.v}
 # QuestaSim-64 vlog 2020.2 Compiler 2020.04 Apr 19 2020
-# Start time: 13:44:17 on Oct 22,2025
+# Start time: 10:58:38 on Nov 13,2025
 # vlog -reportprogress 300 -vlog01compat -work altera_mf_ver c:/intelfpga_lite/17.1/quartus/eda/sim_lib/altera_mf.v 
 # -- Compiling module lcell
 # -- Compiling module ALTERA_MF_MEMORY_INITIALIZATION
@@ -382,7 +382,7 @@
 # 	alt_fault_injection
 # 	sld_virtual_jtag_basic
 # 	altsource_probe
-# End time: 13:44:18 on Oct 22,2025, Elapsed time: 0:00:01
+# End time: 10:58:39 on Nov 13,2025, Elapsed time: 0:00:01
 # Errors: 0, Warnings: 0
 # 
 # vlib verilog_libs/altera_lnsim_ver
@@ -394,7 +394,7 @@
 # Modifying modelsim.ini
 # vlog -sv -work altera_lnsim_ver {c:/intelfpga_lite/17.1/quartus/eda/sim_lib/altera_lnsim.sv}
 # QuestaSim-64 vlog 2020.2 Compiler 2020.04 Apr 19 2020
-# Start time: 13:44:18 on Oct 22,2025
+# Start time: 10:58:39 on Nov 13,2025
 # vlog -reportprogress 300 -sv -work altera_lnsim_ver c:/intelfpga_lite/17.1/quartus/eda/sim_lib/altera_lnsim.sv 
 # -- Compiling package altera_lnsim_functions
 # -- Compiling package altera_generic_pll_functions
@@ -477,7 +477,7 @@
 # 	altera_iopll
 # 	fourteennm_altera_iopll
 # 	fourteennm_simple_iopll
-# End time: 13:44:18 on Oct 22,2025, Elapsed time: 0:00:00
+# End time: 10:58:40 on Nov 13,2025, Elapsed time: 0:00:01
 # Errors: 0, Warnings: 0
 # 
 # vlib verilog_libs/cycloneive_ver
@@ -489,7 +489,7 @@
 # Modifying modelsim.ini
 # vlog -vlog01compat -work cycloneive_ver {c:/intelfpga_lite/17.1/quartus/eda/sim_lib/cycloneive_atoms.v}
 # QuestaSim-64 vlog 2020.2 Compiler 2020.04 Apr 19 2020
-# Start time: 13:44:18 on Oct 22,2025
+# Start time: 10:58:40 on Nov 13,2025
 # vlog -reportprogress 300 -vlog01compat -work cycloneive_ver c:/intelfpga_lite/17.1/quartus/eda/sim_lib/cycloneive_atoms.v 
 # -- Compiling UDP CYCLONEIVE_PRIM_DFFE
 # -- Compiling UDP CYCLONEIVE_PRIM_DFFEAS
@@ -567,7 +567,7 @@
 # 	cycloneive_jtag
 # 	cycloneive_crcblock
 # 	cycloneive_oscillator
-# End time: 13:44:19 on Oct 22,2025, Elapsed time: 0:00:01
+# End time: 10:58:40 on Nov 13,2025, Elapsed time: 0:00:00
 # Errors: 0, Warnings: 0
 # 
 # if {[file exists rtl_work]} {
@@ -581,29 +581,29 @@
 # 
 # vlog -sv -work work +incdir+C:/Users/orlyn/OneDrive/Documentos/GitHub/Practica-2-ISDIG {C:/Users/orlyn/OneDrive/Documentos/GitHub/Practica-2-ISDIG/multipli.sv}
 # QuestaSim-64 vlog 2020.2 Compiler 2020.04 Apr 19 2020
-# Start time: 13:44:19 on Oct 22,2025
+# Start time: 10:58:40 on Nov 13,2025
 # vlog -reportprogress 300 -sv -work work "+incdir+C:/Users/orlyn/OneDrive/Documentos/GitHub/Practica-2-ISDIG" C:/Users/orlyn/OneDrive/Documentos/GitHub/Practica-2-ISDIG/multipli.sv 
 # -- Compiling module multipli
 # 
 # Top level modules:
 # 	multipli
-# End time: 13:44:19 on Oct 22,2025, Elapsed time: 0:00:00
+# End time: 10:58:41 on Nov 13,2025, Elapsed time: 0:00:01
 # Errors: 0, Warnings: 0
 # 
 # vlog -sv -work work +incdir+C:/Users/orlyn/OneDrive/Documentos/GitHub/Practica-2-ISDIG {C:/Users/orlyn/OneDrive/Documentos/GitHub/Practica-2-ISDIG/tb_multipli.sv}
 # QuestaSim-64 vlog 2020.2 Compiler 2020.04 Apr 19 2020
-# Start time: 13:44:19 on Oct 22,2025
+# Start time: 10:58:41 on Nov 13,2025
 # vlog -reportprogress 300 -sv -work work "+incdir+C:/Users/orlyn/OneDrive/Documentos/GitHub/Practica-2-ISDIG" C:/Users/orlyn/OneDrive/Documentos/GitHub/Practica-2-ISDIG/tb_multipli.sv 
 # -- Compiling module tb_multipli
 # 
 # Top level modules:
 # 	tb_multipli
-# End time: 13:44:19 on Oct 22,2025, Elapsed time: 0:00:00
+# End time: 10:58:41 on Nov 13,2025, Elapsed time: 0:00:00
 # Errors: 0, Warnings: 0
 # 
 # vsim -t 1ps -L altera_ver -L lpm_ver -L sgate_ver -L altera_mf_ver -L altera_lnsim_ver -L cycloneive_ver -L rtl_work -L work -voptargs="+acc"  tb_multipli
 # vsim -t 1ps -L altera_ver -L lpm_ver -L sgate_ver -L altera_mf_ver -L altera_lnsim_ver -L cycloneive_ver -L rtl_work -L work -voptargs=""+acc"" tb_multipli 
-# Start time: 13:44:19 on Oct 22,2025
+# Start time: 10:58:41 on Nov 13,2025
 # ** Note: (vsim-3812) Design is being optimized...
 # ** Note: (vopt-143) Recognized 1 FSM in module "multipli(fast)".
 # Loading sv_std.std
@@ -611,21 +611,29 @@
 # Loading work.multipli(fast)
 # 
 # add wave *
+# ** Warning: (vsim-WLF-5000) WLF file currently in use: vsim.wlf
+#           File in use by: orlyn  Hostname: DESKTOP-FL3O7SQ  ProcessID: 23348
+#           Attempting to use alternate WLF file "./wlftg085tf".
+# ** Warning: (vsim-WLF-5001) Could not open WLF file: vsim.wlf
+#           Using alternate file: ./wlftg085tf
 # view structure
 # .main_pane.structure.interior.cs.body.struct
 # view signals
 # .main_pane.objects.interior.cs.body.tree
 # run -all
-# [255000] TC1  0 * 0  A=0 (0x0)  B=0 (0x0)  -> S=0 (0x0)  OK
-# [455000] TC2  3 * 5  A=3 (0x3)  B=5 (0x5)  -> S=3 (0x3)  EXP=15 (0xf)  **FAIL**
-# [655000] TC3  10 * 12  A=10 (0xa)  B=12 (0xc)  -> S=25190400 (0x1806000)  EXP=120 (0x78)  **FAIL**
-# [855000] TC4  15 * 15  A=15 (0xf)  B=15 (0xf)  -> S=25191367 (0x18063c7)  EXP=225 (0xe1)  **FAIL**
-# [1055000] TC5  255 * 2  A=255 (0xff)  B=2 (0x2)  -> S=25190434 (0x1806022)  EXP=510 (0x1fe)  **FAIL**
-# [1255000] TC6  128 * 2  A=128 (0x80)  B=2 (0x2)  -> S=1 (0x1)  EXP=256 (0x100)  **FAIL**
-# [1455000] TC7  200 * 150  A=200 (0xc8)  B=150 (0x96)  -> S=8369442 (0x7fb522)  EXP=30000 (0x7530)  **FAIL**
-# ** Note: $finish    : C:/Users/orlyn/OneDrive/Documentos/GitHub/Practica-2-ISDIG/tb_multipli.sv(89)
-#    Time: 1510 ns  Iteration: 1  Instance: /tb_multipli
+# [175000] TC1  0 * 0  (signed) A=0 B=0 -> S=0  OK
+# [295000] TC2  3 * 5  (signed) A=3 B=5 -> S=15  OK
+# [415000] TC3  10 * 12  (signed) A=10 B=12 -> S=120  OK
+# [535000] TC4  15 * 15  (signed) A=15 B=15 -> S=225  OK
+# [655000] TC5  bits(255,2)    => -2  (signed) A=-1 B=2 -> S=-2  OK
+# [775000] TC6  bits(128,2)    => -256  (signed) A=-128 B=2 -> S=-256  OK
+# [895000] TC7  bits(200,150)  => 5936  (signed) A=-56 B=-106 -> S=5936  OK
+# [1015000] RND1  (signed) A=-37 B=23 -> S=-851  OK
+# [1135000] RND2  (signed) A=105 B=-71 -> S=-7455  OK
+# [1255000] RND3  (signed) A=-128 B=-128 -> S=16384  OK
+# ** Note: $finish    : C:/Users/orlyn/OneDrive/Documentos/GitHub/Practica-2-ISDIG/tb_multipli.sv(99)
+#    Time: 1310 ns  Iteration: 1  Instance: /tb_multipli
 # 1
-# Break in Module tb_multipli at C:/Users/orlyn/OneDrive/Documentos/GitHub/Practica-2-ISDIG/tb_multipli.sv line 89
-# End time: 13:44:48 on Oct 22,2025, Elapsed time: 0:00:29
-# Errors: 0, Warnings: 0
+# Break in Module tb_multipli at C:/Users/orlyn/OneDrive/Documentos/GitHub/Practica-2-ISDIG/tb_multipli.sv line 99
+# End time: 10:59:30 on Nov 13,2025, Elapsed time: 0:00:49
+# Errors: 0, Warnings: 2
